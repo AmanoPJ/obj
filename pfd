@@ -1,3 +1,13 @@
 #!/system/bin/sh
 
-/data/adb/modules/petal/pin/petal1
+while true; do
+  su -c "touch /sdcard/boot"
+  if [ -f /sdcard/boot ]; then
+    /data/adb/modules/petal/bin/petal1 &
+    break
+  fi
+  sleep 1
+done
+
+su -c "rm -f /sdcard/boot"
+exit 0
